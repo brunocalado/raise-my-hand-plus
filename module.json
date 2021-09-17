@@ -1,0 +1,48 @@
+{
+  "name": "raise-my-hand",
+  "title": "✋ Raise My Hand",
+  "description": "Adds a 'Raise my hand' button that displays a small alert on GM screens that the player would like attention",
+  "authors": [
+    {
+      "name": "Cody Swendrowski",
+      "url": "https://swendrowski.us",
+      "email": "cody@swendrowski.us",
+      "discord": "cswendrowski#9701",
+      "patreon": "ironmoose"
+    }
+  ],
+  "url": "https://github.com/cswendrowski/FoundryVTT-Raise-My-Hand",
+  "flags": {},
+  "version": "1.1.0",
+  "minimumCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.8.3",
+  "scripts": [],
+  "esmodules": [
+    "/scripts/module.js"
+  ],
+  "styles": [
+    "/styles/module.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "packs": [],
+  "system": [],
+  "dependencies": [
+    {
+      "name": "_chatcommands",
+      "type": "module",
+      "manifest": "https://github.com/League-of-Foundry-Developers/Chat-Commands-Lib/releases/download/1.2.0/module.json"
+    }
+  ],
+  "socket": true,
+  "manifest": "https://github.com/cswendrowski/FoundryVTT-Raise-My-Hand/releases/latest/download/module.json",
+  "download": "https://github.com/cswendrowski/FoundryVTT-Raise-My-Hand/releases/download/1.1.0/module.zip",
+  "protected": false,
+  "coreTranslation": false,
+  "library": true
+}
