@@ -1,7 +1,7 @@
 import HandRaiser from "./HandRaiser.mjs";
 
 Hooks.on("chatCommandsReady", function(chatCommands) {
-  game.socket.on("module.raise-my-hand", function(recieveMsg) {
+  game.socket.on("module.raise-my-hand-plus", function(recieveMsg) {
     window.game.handRaiser.handleSocket(recieveMsg);
   });
 
@@ -50,7 +50,7 @@ Hooks.on("chatCommandsReady", function(chatCommands) {
 
 
 Hooks.once('ready', function() {
-  let moduleName = 'raise-my-hand';
+  let moduleName = 'raise-my-hand-plus';
 
   let handRaiser = new HandRaiser();
   window.game.handRaiser = handRaiser;
@@ -78,6 +78,14 @@ Hooks.once('ready', function() {
     type: Boolean,
     default: false
   });
+
+  game.settings.register(moduleName, "playSound", {
+    name: "Should a sound be played when raised?",
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
   
   if (game.modules.get("lib-df-hotkeys")?.active) {
     Hotkeys.registerGroup({
@@ -99,7 +107,7 @@ Hooks.on("getSceneControlButtons", function(controls) {
   let tileControls = controls.find(x => x.name === "token");
   tileControls.tools.push({
     icon: "fas fa-hand-paper",
-    name: "raise-my-hand",
+    name: "raise-my-hand-plus",
     title: "✋Raise My Hand",
     button: true,
     onClick: () => window.game.handRaiser.toggle()

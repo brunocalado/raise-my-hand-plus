@@ -1,21 +1,13 @@
 {
-  "name": "raise-my-hand",
-  "title": "✋ Raise My Hand",
+  "name": "raise-my-hand-plus",
+  "title": "✋ Raise My Hand Plus",
   "description": "Adds a 'Raise my hand' button that displays a small alert on GM screens that the player would like attention",
-  "authors": [
-    {
-      "name": "Cody Swendrowski",
-      "url": "https://swendrowski.us",
-      "email": "cody@swendrowski.us",
-      "discord": "cswendrowski#9701",
-      "patreon": "ironmoose"
-    }
-  ],
+  "authors": [],
   "url": "https://github.com/cswendrowski/FoundryVTT-Raise-My-Hand",
   "flags": {},
-  "version": "1.1.0",
-  "minimumCoreVersion": "0.7.9",
-  "compatibleCoreVersion": "0.8.3",
+  "version": "1.1.1",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "0.8.9",
   "scripts": [],
   "esmodules": [
     "/scripts/module.js"

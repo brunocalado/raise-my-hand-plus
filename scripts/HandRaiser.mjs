@@ -3,7 +3,7 @@ export default class HandRaiser {
     constructor() {
         this.isRaised = false;
         this.userId = game.userId;
-        this.moduleName = "raise-my-hand";
+        this.moduleName = "raise-my-hand-plus";
     }
 
     handleSocket(recieveMsg) {
@@ -32,7 +32,7 @@ export default class HandRaiser {
             type: "RAISE",
             playerID: this.userId
         };
-        game.socket.emit("module.raise-my-hand", msg);
+        game.socket.emit("module.raise-my-hand-plus", msg);
     }
 
     raiseById(id) {
@@ -49,12 +49,18 @@ export default class HandRaiser {
             let player = game.users.get(id);           
             let message=`<h2>${player.name}</h2>`;
             message+=`<p>${player.name}  has their hand raised</p>`;  
-            message+= `<p><img style="vertical-align:middle" src="modules/raise-my-hand/assets/hand.svg" width="100%"></p>`;
+            message+= `<p><img style="vertical-align:middle" src="modules/raise-my-hand-plus/assets/hand.svg" width="100%"></p>`;
             let chatData = {
               content: message
             };  
             ChatMessage.create(chatData, {});  
-        }        
+        }   
+        
+        if (game.settings.get(this.moduleName, "playSound")) {
+          const mySound = 'modules/raise-my-hand-plus/assets/bell01.ogg';
+          AudioHelper.play({src: mySound, volume: 1.0, autoplay: true, loop: false}, true);
+        }   
+
     }
 
     lower() {
@@ -66,7 +72,7 @@ export default class HandRaiser {
             type: "LOWER",
             playerID: this.userId
         };
-        game.socket.emit("module.raise-my-hand", msg);
+        game.socket.emit("module.raise-my-hand-plus", msg);
     }
 
     lowerById(id) {
