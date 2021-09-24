@@ -33,20 +33,9 @@ export default class HandRaiser {
             playerID: this.userId
         };
         game.socket.emit("module.raise-my-hand-plus", msg);
-    }
 
-    raiseById(id) {
-        if (game.settings.get(this.moduleName, "showEmojiIndicator")) {
-            $("[data-user-id='" + id + "'] > .player-name").append("<span class='raised-hand'>✋</span>")
-        }
-
-        if (game.settings.get(this.moduleName, "showUiNotification")) {
-            let player = game.users.get(id);
-            ui.notifications.notify(player.name + " has their hand raised");
-        }
-        
         if (game.settings.get(this.moduleName, "showUiChatMessage")) {
-            let player = game.users.get(id);           
+            let player = game.users.get(this.userId);           
             let message=`<h2>${player.name}</h2>`;
             message+=`<p>${player.name}  has their hand raised</p>`;  
             message+= `<p><img style="vertical-align:middle" src="modules/raise-my-hand-plus/assets/hand.svg" width="100%"></p>`;
@@ -59,7 +48,20 @@ export default class HandRaiser {
         if (game.settings.get(this.moduleName, "playSound")) {
           const mySound = 'modules/raise-my-hand-plus/assets/bell01.ogg';
           AudioHelper.play({src: mySound, volume: 1.0, autoplay: true, loop: false}, true);
-        }   
+        }         
+    }
+
+    raiseById(id) {
+        if (game.settings.get(this.moduleName, "showEmojiIndicator")) {
+            $("[data-user-id='" + id + "'] > .player-name").append("<span class='raised-hand'>✋</span>")
+        }
+
+        if (game.settings.get(this.moduleName, "showUiNotification")) {
+            let player = game.users.get(id);
+            ui.notifications.notify(player.name + " has their hand raised");
+        }
+        
+  
 
     }
 
