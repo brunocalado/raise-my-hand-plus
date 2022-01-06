@@ -46,8 +46,9 @@ export default class HandRaiser {
         }   
         
         if (game.settings.get(this.moduleName, "playSound")) {
-          const mySound = 'modules/raise-my-hand-plus/assets/bell01.ogg';
-          AudioHelper.play({src: mySound, volume: 1.0, autoplay: true, loop: false}, true);
+          const soundVolume = game.settings.get("raise-my-hand-plus", "warningsoundvolume");         
+          const mySound = game.settings.get("raise-my-hand-plus", "warningsoundpath"); //const mySound = 'modules/raise-my-hand-plus/assets/bell01.ogg';
+          AudioHelper.play({src: mySound, volume: soundVolume, autoplay: true, loop: false}, true);
         }         
     }
 
@@ -59,10 +60,7 @@ export default class HandRaiser {
         if (game.settings.get(this.moduleName, "showUiNotification")) {
             let player = game.users.get(id);
             ui.notifications.notify(player.name + " has their hand raised");
-        }
-        
-  
-
+        }  
     }
 
     lower() {
