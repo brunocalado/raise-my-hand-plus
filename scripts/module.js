@@ -78,7 +78,17 @@ Hooks.once('ready', function() {
     type: Boolean,
     default: false
   });
-
+  
+  // call this with: game.settings.get("raise-my-hand-plus", "chatimagepath")
+  game.settings.register('raise-my-hand-plus', 'chatimagepath', {
+    name: 'Chat Image Path',
+    hint: 'You can set a path to the image displayed on the chat.',
+    scope: 'world',
+    config: true,
+    default: 'modules/raise-my-hand-plus/assets/hand.svg',
+    type: String
+  }); 
+  
   game.settings.register(moduleName, "playSound", {
     name: "Should a sound be played when raised?",
     scope: 'world',
@@ -105,6 +115,14 @@ Hooks.once('ready', function() {
     config: true,
     default: 0.6,
     type: Number
+  });
+
+  game.settings.register(moduleName, "shakescreen", {
+    name: "Should a raised hand shake the screen? THIS REQUIRES THE MODULE Fluid Canvas",
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
   });
   
   if (game.modules.get("lib-df-hotkeys")?.active) {

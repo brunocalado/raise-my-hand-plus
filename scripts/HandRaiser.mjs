@@ -35,10 +35,11 @@ export default class HandRaiser {
         game.socket.emit("module.raise-my-hand-plus", msg);
 
         if (game.settings.get(this.moduleName, "showUiChatMessage")) {
+            const imagePath = game.settings.get("raise-my-hand-plus", "chatimagepath");         
             let player = game.users.get(this.userId);           
             let message=`<h2>${player.name}</h2>`;
             message+=`<p>${player.name}  has their hand raised</p>`;  
-            message+= `<p><img style="vertical-align:middle" src="modules/raise-my-hand-plus/assets/hand.svg" width="100%"></p>`;
+            message+= `<p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p>`;
             let chatData = {
               content: message
             };  
@@ -49,7 +50,15 @@ export default class HandRaiser {
           const soundVolume = game.settings.get("raise-my-hand-plus", "warningsoundvolume");         
           const mySound = game.settings.get("raise-my-hand-plus", "warningsoundpath"); //const mySound = 'modules/raise-my-hand-plus/assets/bell01.ogg';
           AudioHelper.play({src: mySound, volume: soundVolume, autoplay: true, loop: false}, true);
-        }         
+        }    
+        
+        // shake screen
+        if (game.settings.get(this.moduleName, "shakescreen")) {
+          const intensity = 1;
+          const duration = 500;
+          const iteration = 3;
+          FluidCanvas.earthquake(intensity, duration, iteration);
+        }             
     }
 
     raiseById(id) {
