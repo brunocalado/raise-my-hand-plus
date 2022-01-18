@@ -1,57 +1,22 @@
+const moduleName = 'raise-my-hand-plus';
 import HandRaiser from "./HandRaiser.mjs";
 
-Hooks.on("chatCommandsReady", function(chatCommands) {
-  game.socket.on("module.raise-my-hand-plus", function(recieveMsg) {
-    window.game.handRaiser.handleSocket(recieveMsg);
-  });
-
-  chatCommands.registerCommand(chatCommands.createCommandFromData({
-    commandKey: "/raisemyhand",
-    invokeOnCommand: (chatlog, messageText, chatdata) => {
-      window.game.handRaiser.raise();
+Hooks.once("init", async function () {
+  game.keybindings.register(moduleName, "raiseHand", {
+    name: 'Raise Hand',
+    hint: 'Toogle Raise Hand',
+    editable: [{ key: "KeyH", modifiers: []}],
+    onDown: () => {
+      window.game.handRaiser.isRaised ? window.game.handRaiser.lower() : window.game.handRaiser.raise();
     },
-    shouldDisplayToChat: false,
-    iconClass: "fa-hand-paper",
-    description: "Show raised hand indicator"
-  }));
-
-  chatCommands.registerCommand(chatCommands.createCommandFromData({
-    commandKey: "/lowermyhand",
-    invokeOnCommand: (chatlog, messageText, chatdata) => {
-      window.game.handRaiser.lower();
-    },
-    shouldDisplayToChat: false,
-    iconClass: "fa-hand-paper",
-    description: "Lower raised hand indicator"
-  }));
-
-  chatCommands.registerCommand(chatCommands.createCommandFromData({
-    commandKey: "/rmh",
-    invokeOnCommand: (chatlog, messageText, chatdata) => {
-      window.game.handRaiser.raise();
-    },
-    shouldDisplayToChat: false,
-    iconClass: "fa-hand-paper",
-    description: "Show raised hand indicator"
-  }));
-
-  chatCommands.registerCommand(chatCommands.createCommandFromData({
-    commandKey: "/lmh",
-    invokeOnCommand: (chatlog, messageText, chatdata) => {
-      window.game.handRaiser.lower();
-    },
-    shouldDisplayToChat: false,
-    iconClass: "fa-hand-paper",
-    description: "Lower raised hand indicator"
-  }));
-
-  
+    onUp: () => {},
+    restricted: false,  // Restrict this Keybinding to gamemaster only?
+    reservedModifiers: [],
+    precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL
+  })
 });
 
-
 Hooks.once('ready', function() {
-  let moduleName = 'raise-my-hand-plus';
-
   let handRaiser = new HandRaiser();
   window.game.handRaiser = handRaiser;
 
@@ -80,7 +45,7 @@ Hooks.once('ready', function() {
   });
   
   // call this with: game.settings.get("raise-my-hand-plus", "chatimagepath")
-  game.settings.register('raise-my-hand-plus', 'chatimagepath', {
+  game.settings.register(moduleName, 'chatimagepath', {
     name: 'Chat Image Path',
     hint: 'You can set a path to the image displayed on the chat.',
     scope: 'world',
@@ -98,7 +63,7 @@ Hooks.once('ready', function() {
   });
   
   // call this with: game.settings.get("raise-my-hand-plus", "warningsoundpath")
-  game.settings.register('raise-my-hand-plus', 'warningsoundpath', {
+  game.settings.register(moduleName, 'warningsoundpath', {
     name: 'Warning Sound Path',
     hint: 'You can set a path to a sound you prefer.',
     scope: 'world',
@@ -108,7 +73,7 @@ Hooks.once('ready', function() {
   });  
   
   // call this with: game.settings.get("raise-my-hand-plus", "warningsoundvolume")
-  game.settings.register('raise-my-hand-plus', 'warningsoundvolume', {
+  game.settings.register(moduleName, 'warningsoundvolume', {
     name: 'Warning Sound Volume',
     hint: 'You can set the volume for the warning sound. Use 0.1 for 10% of the volume. 0.6 for 60% of the volume.',
     scope: 'world',
@@ -118,27 +83,14 @@ Hooks.once('ready', function() {
   });
 
   game.settings.register(moduleName, "shakescreen", {
-    name: "Should a raised hand shake the screen? THIS REQUIRES THE MODULE Fluid Canvas",
+    name: 'Shake Screen',
+    hint: "Should a raised hand shake the screen? THIS REQUIRES THE MODULE Fluid Canvas",
     scope: 'world',
     config: true,
     type: Boolean,
     default: false
   });
-  
-  if (game.modules.get("lib-df-hotkeys")?.active) {
-    Hotkeys.registerGroup({
-      name: moduleName,
-      label: "Raise My Hand"
-    });
-    
-    Hotkeys.registerShortcut({
-      name: `${moduleName}.Toggle`,
-      label: "Raise/Lower My Hand",
-      group: moduleName,
-      default: { key: Hotkeys.keys.KeyR, alt: false, ctrl: false, shift: false },
-      onKeyDown: () => window.game.handRaiser.isRaised ? window.game.handRaiser.lower() : window.game.handRaiser.raise()
-    });
-  }
+
 });
 
 Hooks.on("getSceneControlButtons", function(controls) {

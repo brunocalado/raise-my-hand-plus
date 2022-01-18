@@ -1,12 +1,12 @@
 {
   "name": "raise-my-hand-plus",
   "title": "✋ Raise My Hand Plus",
-  "description": "Adds a 'Raise my hand' button that displays a small alert on GM screens that the player would like attention",
+  "description": "Adds a 'Raise my hand' button that displays a small alert on GM screens that the player would like attention.",
   "authors": [],
   "url": "https://github.com/brunocalado/raise-my-hand-plus",
   "flags": {},
-  "version": "1.1.7",
-  "minimumCoreVersion": "0.8.9",
+  "version": "1.1.8",
+  "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "scripts": [],
   "esmodules": [
@@ -24,13 +24,7 @@
   ],
   "packs": [],
   "system": [],
-  "dependencies": [
-    {
-      "name": "_chatcommands",
-      "type": "module",
-      "manifest": "https://github.com/League-of-Foundry-Developers/Chat-Commands-Lib/releases/download/1.4.0/module.json"
-    }
-  ],
+  "dependencies": [],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/brunocalado/raise-my-hand-plus/main/module.json",
   "download": "https://codeload.github.com/brunocalado/raise-my-hand-plus/zip/main",

@@ -37,12 +37,12 @@ export default class HandRaiser {
         if (game.settings.get(this.moduleName, "showUiChatMessage")) {
             const imagePath = game.settings.get("raise-my-hand-plus", "chatimagepath");         
             let player = game.users.get(this.userId);           
-            let message=`<h2>${player.name}</h2>`;
-            message+=`<p>${player.name}  has their hand raised</p>`;  
-            message+= `<p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p>`;
+            //let message=`<h2>${player.name}</h2>`;
+            //message+=`<p>${player.name}  has their hand raised</p>`;  
+            //message+= `<p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p>`;
             let chatData = {
-              content: message
-            };  
+              speaker: null,
+              content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px">${player.name} has their hand raised</label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p></div>`};            
             ChatMessage.create(chatData, {});  
         }   
         
