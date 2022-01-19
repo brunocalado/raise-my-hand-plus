@@ -23,7 +23,12 @@
         "lang": "pt-BR",
         "name": "Português Brasileiro",
         "path": "lang/pt-BR.json"
-    }   
+    },
+    {
+        "lang": "fr",
+        "name": "Français",
+        "path": "lang/fr.json"
+    }      
   ],
   "packs": [],
   "system": [],
