@@ -115,7 +115,7 @@ export default class HandRaiser {
   }
   
   sendNotification(player) {
-    ui.notifications.notify( player.name + game.i18n.localize("raise-my-hand.UINOTIFICATION") ); //' has their hand raised'    
+    ui.notifications.notify( '✋ ' + player.name + game.i18n.localize("raise-my-hand.UINOTIFICATION") ); //' has their hand raised'    
   }   
   
   shakeTheScreen() {
@@ -126,7 +126,7 @@ export default class HandRaiser {
     if (game.modules.get('kandashis-fluid-canvas')?.active) { 
       FluidCanvas.earthquake(intensity, duration, iteration);
     } else {
-      ui.notifications.error( game.i18n.localize("raise-my-hand.kandashisfluidcanvas") ); //
+      ui.notifications.error( '✋ ' + game.i18n.localize("raise-my-hand.kandashisfluidcanvas") ); //
     }       
   } 
 }
