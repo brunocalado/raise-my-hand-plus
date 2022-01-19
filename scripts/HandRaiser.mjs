@@ -53,13 +53,13 @@ export default class HandRaiser {
         }
         chatData = {
           speaker: null,
-          content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px">has their hand raised!</label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><img style="vertical-align:middle" src="${imagePath}" width="${chatImageWidth}%"></p></div>`
-        };
+          content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.UINOTIFICATION")}</label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><img style="vertical-align:middle" src="${imagePath}" width="${chatImageWidth}%"></p></div>`
+        }; // has their hand raised!
       } else {
         chatData = {
           speaker: null,
-          content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px"></label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><label style="font-size: 15px">has their hand raised!</label></p></div>`
-        };
+          content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px"></label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.UINOTIFICATION")}</label></p></div>`
+        }; // has their hand raised!
       }
 
       ChatMessage.create(chatData, {});
@@ -115,13 +115,18 @@ export default class HandRaiser {
   }
   
   sendNotification(player) {
-    ui.notifications.notify(player.name + " has their hand raised");
+    ui.notifications.notify( player.name + game.i18n.localize("raise-my-hand.UINOTIFICATION") ); //' has their hand raised'    
   }   
   
   shakeTheScreen() {
     const intensity = 1;
     const duration = 500;
     const iteration = 3;
-    FluidCanvas.earthquake(intensity, duration, iteration);
+    
+    if (game.modules.get('kandashis-fluid-canvas')?.active) { 
+      FluidCanvas.earthquake(intensity, duration, iteration);
+    } else {
+      ui.notifications.error( game.i18n.localize("raise-my-hand.kandashisfluidcanvas") ); //
+    }       
   } 
 }
