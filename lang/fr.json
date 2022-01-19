@@ -1,0 +1,53 @@
+{
+    "raise-my-hand": {
+        "UINOTIFICATION": " a levé à la main !",
+        "CHATMESSAGE": " a levé à la main !",
+        "kandashisfluidcanvas": "Vous avez besoin du module Fluid Canvas !",
+        "settings": {
+            "displayhand": {
+                "name": "Afficher la main dans la liste des joueurs",
+                "hint": "Une icône de main sera affichée dans la liste des joueurs."
+            },
+            "showuinotification": {
+                "name": "Afficher une notification",
+                "hint": "Une notification sera affichée à tous les joueurs."
+            },
+            "showuichatmessage": {
+                "name": "Afficher un message dans le chat",
+                "hint": "Un message dans le chat sera affiché."
+            },
+            "showimagechatmessage": {
+                "name": "Ajouter une image au message dans le chat",
+                "hint": "Ceci ajoutera une image au message dans le chat."
+            },
+            "chatimagepath": {
+                "name": "Chemin de l'image dans le chat",
+                "hint": "Vous pouvez configurer l'image qui sera affichée dans le chat."
+            },
+            "chatimagewidth": {
+                "name": "Largeur de l'image dans le chat",
+                "hint": "Vous pouvez configurer la largeur de l'image ou de l'avatar qui sera affiché dans le chat (en %)."
+            },
+            "chatmessageimageuserart": {
+                "name": "Remplacer l'image avec l'avatar dans le chat",
+                "hint": "Ceci remplacera l'image avec l'avatar dans le chat."
+            },
+            "playsound": {
+                "name": "Lire un son",
+                "hint": "Ceci lira un son par défaut."
+            },
+            "warningsoundpath": {
+                "name": "Chemin du son",
+                "hint": "Vous pouvez configurer le son qui sera lu."
+            },
+            "warningsoundvolume": {
+                "name": "Volume du son",
+                "hint": "Vous pouvez configurer le volume du son. 0.1 pour 10 %. 0.6 pour 60%."
+            },
+            "shakescreen": {
+                "name": "Secousses de l'écran",
+                "hint": "Ceci déclenchera des secousse de l'écran. Ce paramètre requiert le module Fluid Canvas !"
+            }
+        }
+    }
+}
