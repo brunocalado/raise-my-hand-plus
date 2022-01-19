@@ -14,7 +14,7 @@ If you want to translate this module [DOWNLOAD THIS FILE](https://raw.githubuser
 
 ## Community
 - Do you found a bug? [Report it!](https://github.com/brunocalado/raise-my-hand-plus/issues)
-- Do you want to send a translation? [Report it!](https://github.com/brunocalado/raise-my-hand-plus/issues)
+- Do you want to send a translation? [Send it!](https://github.com/brunocalado/raise-my-hand-plus/issues)
 
 # License
 This module is a fork from (Raise My Hand): https://github.com/cswendrowski/FoundryVTT-Raise-My-Hand
