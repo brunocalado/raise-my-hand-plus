@@ -53,6 +53,20 @@ Hooks.once('ready', function() {
     default: 'modules/raise-my-hand/assets/hand.svg',
     type: String
   }); 
+  
+  game.settings.register(moduleName, 'chatimagewidth', {
+    name: 'Chat Image Width',
+    hint: 'You can set the size of the custom image or player avatar. It is %',
+    scope: 'world',
+    config: true,
+    default: 100,
+    range: {
+        min: 20,
+        max: 100,
+        step: 5
+    },    
+    type: Number
+  }); 
 
   game.settings.register(moduleName, "chatMessageImageUserArt", {
     name: "Should chat image be the user avatar?",
@@ -88,6 +102,11 @@ Hooks.once('ready', function() {
     scope: 'world',
     config: true,
     default: 0.6,
+    range: {
+        min: 0.2,
+        max: 1,
+        step: 0.1
+    },     
     type: Number
   });
 
