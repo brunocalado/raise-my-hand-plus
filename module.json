@@ -1,27 +1,19 @@
 {
-  "name": "raise-my-hand-plus",
-  "title": "✋ Raise My Hand Plus",
+  "name": "raise-my-hand",
+  "title": "✋ Raise My Hand",
   "description": "Adds a 'Raise my hand' button that displays a small alert on GM screens that the player would like attention.",
   "authors": [],
   "url": "https://github.com/brunocalado/raise-my-hand-plus",
   "flags": {},
-  "version": "1.1.8",
+  "version": "1.1.9",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "scripts": [],
   "esmodules": [
     "/scripts/module.js"
   ],
-  "styles": [
-    "/styles/module.css"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
-  ],
+  "styles": [],
+  "languages": [],
   "packs": [],
   "system": [],
   "dependencies": [],

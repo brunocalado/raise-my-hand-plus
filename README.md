@@ -1,13 +1,12 @@
-# ✋ Raise My Hand Plus
+# ✋ Raise My Hand
 A player can click in the hand to request attention.
 
 ## Features
 - A small hand will appear next to the name.
-- A warning will be displayed.
+- A notification warning will be displayed.
 - A sound will be played. You can set the sound and volume.
-- A message will be sent to the chat.
+- A message will be sent to the chat. It will get the user color.
 - You can shake the screen. **Requires Fluid Canvas**.
-- You can can trigger the functions with a simple expression.
 - Foundry VTT Keybind. Check Controls.
 
 # License

@@ -3,7 +3,7 @@ export default class HandRaiser {
     constructor() {
         this.isRaised = false;
         this.userId = game.userId;
-        this.moduleName = "raise-my-hand-plus";
+        this.moduleName = "raise-my-hand";
     }
 
     handleSocket(recieveMsg) {
@@ -32,23 +32,29 @@ export default class HandRaiser {
             type: "RAISE",
             playerID: this.userId
         };
-        game.socket.emit("module.raise-my-hand-plus", msg);
-
+        game.socket.emit("module.raise-my-hand", msg);
+        
+        // ======================================
+        // CHAT
         if (game.settings.get(this.moduleName, "showUiChatMessage")) {
-            const imagePath = game.settings.get("raise-my-hand-plus", "chatimagepath");         
             let player = game.users.get(this.userId);           
-            //let message=`<h2>${player.name}</h2>`;
-            //message+=`<p>${player.name}  has their hand raised</p>`;  
-            //message+= `<p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p>`;
+            let imagePath;
+            
+            if (game.settings.get(this.moduleName, "chatMessageImageUserArt")) {
+              imagePath = player.data.avatar;
+            } else {
+              imagePath = game.settings.get("raise-my-hand", "chatimagepath");         
+            }            
+            
             let chatData = {
               speaker: null,
-              content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px">${player.name} has their hand raised</label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p></div>`};            
+              content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px">has their hand raised!</label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><img style="vertical-align:middle" src="${imagePath}" width="100%"></p></div>`};            
             ChatMessage.create(chatData, {});  
         }   
-        
+
         if (game.settings.get(this.moduleName, "playSound")) {
-          const soundVolume = game.settings.get("raise-my-hand-plus", "warningsoundvolume");         
-          const mySound = game.settings.get("raise-my-hand-plus", "warningsoundpath"); //const mySound = 'modules/raise-my-hand-plus/assets/bell01.ogg';
+          const soundVolume = game.settings.get("raise-my-hand", "warningsoundvolume");         
+          const mySound = game.settings.get("raise-my-hand", "warningsoundpath"); //const mySound = 'modules/raise-my-hand/assets/bell01.ogg';
           AudioHelper.play({src: mySound, volume: soundVolume, autoplay: true, loop: false}, true);
         }    
         
@@ -81,7 +87,7 @@ export default class HandRaiser {
             type: "LOWER",
             playerID: this.userId
         };
-        game.socket.emit("module.raise-my-hand-plus", msg);
+        game.socket.emit("module.raise-my-hand", msg);
     }
 
     lowerById(id) {

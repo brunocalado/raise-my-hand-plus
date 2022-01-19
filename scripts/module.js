@@ -1,4 +1,4 @@
-const moduleName = 'raise-my-hand-plus';
+const moduleName = 'raise-my-hand';
 import HandRaiser from "./HandRaiser.mjs";
 
 Hooks.once("init", async function () {
@@ -44,15 +44,24 @@ Hooks.once('ready', function() {
     default: false
   });
   
-  // call this with: game.settings.get("raise-my-hand-plus", "chatimagepath")
+  // call this with: game.settings.get("raise-my-hand", "chatimagepath")
   game.settings.register(moduleName, 'chatimagepath', {
     name: 'Chat Image Path',
     hint: 'You can set a path to the image displayed on the chat.',
     scope: 'world',
     config: true,
-    default: 'modules/raise-my-hand-plus/assets/hand.svg',
+    default: 'modules/raise-my-hand/assets/hand.svg',
     type: String
   }); 
+
+  game.settings.register(moduleName, "chatMessageImageUserArt", {
+    name: "Should chat image be the user avatar?",
+    hint: 'This will use the user avatar as chat image instead of the default image.',
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
   
   game.settings.register(moduleName, "playSound", {
     name: "Should a sound be played when raised?",
@@ -62,17 +71,17 @@ Hooks.once('ready', function() {
     default: false
   });
   
-  // call this with: game.settings.get("raise-my-hand-plus", "warningsoundpath")
+  // call this with: game.settings.get("raise-my-hand", "warningsoundpath")
   game.settings.register(moduleName, 'warningsoundpath', {
     name: 'Warning Sound Path',
     hint: 'You can set a path to a sound you prefer.',
     scope: 'world',
     config: true,
-    default: 'modules/raise-my-hand-plus/assets/bell01.ogg',
+    default: 'modules/raise-my-hand/assets/bell01.ogg',
     type: String
   });  
   
-  // call this with: game.settings.get("raise-my-hand-plus", "warningsoundvolume")
+  // call this with: game.settings.get("raise-my-hand", "warningsoundvolume")
   game.settings.register(moduleName, 'warningsoundvolume', {
     name: 'Warning Sound Volume',
     hint: 'You can set the volume for the warning sound. Use 0.1 for 10% of the volume. 0.6 for 60% of the volume.',
@@ -97,7 +106,7 @@ Hooks.on("getSceneControlButtons", function(controls) {
   let tileControls = controls.find(x => x.name === "token");
   tileControls.tools.push({
     icon: "fas fa-hand-paper",
-    name: "raise-my-hand-plus",
+    name: "raise-my-hand",
     title: "✋Raise My Hand",
     button: true,
     onClick: () => window.game.handRaiser.toggle()
