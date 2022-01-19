@@ -47,7 +47,7 @@
 			},
 			"shakescreen": {
 				"name": "Shake Screen",
-        "hint": "Should a raised hand shake the screen? THIS REQUIRES THE MODULE Fluid Canvas"
+        "hint": "This will shake the screen. THIS REQUIRES Fluid Canvas MODULE!"
 			}
 		}
   }

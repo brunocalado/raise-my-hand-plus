@@ -5,7 +5,7 @@
   "authors": [],
   "url": "https://github.com/brunocalado/raise-my-hand-plus",
   "flags": {},
-  "version": "1.2.4",
+  "version": "1.2.5",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "scripts": [],
@@ -15,10 +15,15 @@
   "styles": [],
   "languages": [
     {
-        "lang": "en",
-        "name": "English",
-        "path": "lang/en.json"
-    }
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+        "lang": "pt-BR",
+        "name": "Português Brasileiro",
+        "path": "lang/pt-BR.json"
+    }   
   ],
   "packs": [],
   "system": [],

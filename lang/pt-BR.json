@@ -1,0 +1,58 @@
+{
+	"raise-my-hand": {
+		"UINOTIFICATION": " está com a mão levantada.",
+		"CHATMESSAGE": "está com a mão levantada!",    
+    "kandashisfluidcanvas": "Você precisa do módulo Fluid Canvas!",    
+    
+		"settings": {
+			"displayhand": {
+        "name": "Mostrar Mão na Lista de Jogadores",
+				"hint": "Um ícone de mão será mostrado na lista de jogadores."
+			},
+			"showuinotification": {
+        "name": "Exibir Notificação de Interface",
+				"hint": "Uma notificação na interface será exibida."
+			},
+			"showuichatmessage": {
+				"name": "Mostrar Mensagem de Chat",
+        "hint": "Uma mensagem de chat será exibida."
+			},
+			"showimagechatmessage": {
+				"name": "Adicionar Imagem a Mensagem de Chat",
+        "hint": "Uma imagem será adicionada a mensagem de chat."
+			},
+			"chatimagepath": {
+				"name": "Endereço da Imagem do Chat",
+        "hint": "Você pode definir uma imagem para a mensagem do chat."
+			},
+			"chatimagewidth": {
+				"name": "Largura da Imagem do Chat",
+        "hint": "Você pode definir o tamanho da imagem do chat. Está em porcentagem (%)."
+			},
+			"chatmessageimageuserart": {
+				"name": "Trocar Imagem do Chat pelo Avatar do Jogador",
+        "hint": "Isso vai usar o avatar do jogador no lugar de uma imagem padrão na mensagem de chat."
+			},
+			"playsound": {
+				"name": "Tocar Som",
+        "hint": "Isso vai tocar um som."
+			},
+			"warningsoundpath": {
+				"name": "Endereço do Som",
+        "hint": "Você pode colocar o endereço de um som que preferir."
+			},
+			"warningsoundvolume": {
+				"name": "Ajuste do Volume do Som",
+        "hint": "Vpcê pode definir o volume do som. Varia de 0,1 até 1. Isso representa porcentagem. Exemplo: 0.6 é 60% do volume."
+			},
+			"shakescreen": {
+				"name": "Sacodir a Tela",
+        "hint": "Isso vai tremer a tela. OBRIGATÓRIO TER O MÓDULO Fluid Canvas ATIVADO!"
+			}
+		}
+  }
+}
+
+
+
+
