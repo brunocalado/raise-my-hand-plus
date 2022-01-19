@@ -43,6 +43,14 @@ Hooks.once('ready', function() {
     type: Boolean,
     default: false
   });
+
+  game.settings.register(moduleName, "showImageChatMessage", {
+    name: "Should a image be displayed with the chat message?",
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: true
+  });
   
   // call this with: game.settings.get("raise-my-hand", "chatimagepath")
   game.settings.register(moduleName, 'chatimagepath', {
@@ -131,3 +139,4 @@ Hooks.on("getSceneControlButtons", function(controls) {
     onClick: () => window.game.handRaiser.toggle()
   });
 });
+
