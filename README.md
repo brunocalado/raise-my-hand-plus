@@ -1,6 +1,19 @@
 # ✋ Raise My Hand
 A player can click in the hand to request attention.
 
+## Everything you need to know is in the module settings.
+<table>
+<thead>
+  <tr>
+    <th>
+      <p align="center">
+        <img width="1000" src="assets/doc.webp">
+      </p>
+    </th>
+  </tr>
+</thead>
+</table> 
+
 ## Features
 - A small hand will appear next to the player name.
 - A notification warning will be displayed.

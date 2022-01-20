@@ -13,6 +13,10 @@
         "name": "Display UI Notification",
 				"hint": "A UI notification will be displayed for all players."
 			},
+			"makeuinotificationpermanent": {
+        "name": "Permanent UI Notification",
+				"hint": "This will make the notification permanent. You will need to click on it do dismiss."
+			},      
 			"showuichatmessage": {
 				"name": "Show Chat Message",
         "hint": "A chat message will be displayed."

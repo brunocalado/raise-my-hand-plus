@@ -16,7 +16,9 @@ export default class HandRaiser {
     } else if (recieveMsg.type == "LOWER") {
       this.lowerById(recieveMsg.playerID);
     } else {
+      console.error('==============');
       console.error("Unexpected socket message type - " + recieveMsg.type);
+      console.error('==============');
     }
   }
 
@@ -84,15 +86,13 @@ export default class HandRaiser {
 
     if (game.settings.get(this.moduleName, "showUiNotification")) {
       let player = game.users.get(id);
-    	//let socket = socketlib.registerModule(this.moduleName);       	
       //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforeveryone
-      this.socket.executeForEveryone(this.sendNotification, player);      
-      console.log(player)
+      const permanentFlag = game.settings.get(this.moduleName, "makeUiNotificationPermanent");
+      this.socket.executeForEveryone(this.sendNotification, player, permanentFlag);      
     }  
 
     // shake screen
     if (game.settings.get(this.moduleName, "shakescreen")) {
-      //let socket = socketlib.registerModule(this.moduleName);   
       //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforeveryone            
       this.socket.executeForEveryone(this.shakeTheScreen); 
     }
@@ -114,10 +114,10 @@ export default class HandRaiser {
     $("[data-user-id='" + id + "'] > .player-name > .raised-hand").remove();
   }
   
-  sendNotification(player) {
-    ui.notifications.notify( '✋ ' + player.name + game.i18n.localize("raise-my-hand.UINOTIFICATION") ); //' has their hand raised'    
+  sendNotification(player, permanentFlag) {    
+    ui.notifications.notify( '✋ ' + player.name + game.i18n.localize("raise-my-hand.UINOTIFICATION"), 'info', {permanent: permanentFlag} ); 
   }   
-  
+
   shakeTheScreen() {
     const intensity = 1;
     const duration = 500;

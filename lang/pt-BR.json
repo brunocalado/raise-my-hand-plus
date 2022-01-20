@@ -13,6 +13,10 @@
         "name": "Exibir Notificação de Interface",
 				"hint": "Uma notificação na interface será exibida."
 			},
+			"makeuinotificationpermanent": {
+        "name": "Notificação Permanente",
+				"hint": "Essa opção vai fazer com que a notificação seja permanente. Você vai precisar clicar nela para que ela suma."
+			},         
 			"showuichatmessage": {
 				"name": "Mostrar Mensagem de Chat",
         "hint": "Uma mensagem de chat será exibida."

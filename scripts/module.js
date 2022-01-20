@@ -13,7 +13,7 @@ Hooks.once("init", async function () {
     restricted: false,  // Restrict this Keybinding to gamemaster only?
     reservedModifiers: [],
     precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL
-  })
+  });
 });
 
 Hooks.once('ready', function() {
@@ -32,6 +32,15 @@ Hooks.once('ready', function() {
   game.settings.register(moduleName, "showUiNotification", {
     name: game.i18n.localize("raise-my-hand.settings.showuinotification.name"), // "Should a raised hand display a UI notification when raised?",
     hint: game.i18n.localize("raise-my-hand.settings.showuinotification.hint"), // "Should a raised hand display a UI notification when raised?",    
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
+
+  game.settings.register(moduleName, "makeUiNotificationPermanent", {
+    name: game.i18n.localize("raise-my-hand.settings.makeuinotificationpermanent.name"), 
+    hint: game.i18n.localize("raise-my-hand.settings.makeuinotificationpermanent.hint"), 
     scope: 'world',
     config: true,
     type: Boolean,
