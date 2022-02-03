@@ -7,7 +7,7 @@ A player can click in the hand to request attention.
   <tr>
     <th>
       <p align="center">
-        <img width="1000" src="assets/doc.webp">
+        <img width="900" src="assets/doc.webp">
       </p>
     </th>
   </tr>
@@ -16,7 +16,7 @@ A player can click in the hand to request attention.
 
 ## Features
 - A small hand will appear next to the player name.
-- A notification warning will be displayed.
+- A notification warning will be displayed. You can set to everyone or just GM users.
 - A sound will be played. You can set the sound and volume.
 - A message will be sent to the chat. It will get the user color.
 - You can shake the screen. **Requires Fluid Canvas**.

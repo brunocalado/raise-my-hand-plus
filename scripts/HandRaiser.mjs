@@ -46,21 +46,23 @@ export default class HandRaiser {
       let chatImageWidth = game.settings.get(this.moduleName, "chatimagewidth");
       let chatData;
       const showImageChatMessage = game.settings.get(this.moduleName, "showImageChatMessage");
-
+      let message='';
       if (showImageChatMessage) {
         if (game.settings.get(this.moduleName, "chatMessageImageUserArt")) {
           imagePath = player.data.avatar;
         } else {
           imagePath = game.settings.get("raise-my-hand", "chatimagepath");
         }
+        message += `<label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label></br><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.CHATMESSAGE")}</label><p><img style="vertical-align:middle" src="${imagePath}" width="${chatImageWidth}%"></p>`; 
         chatData = {
           speaker: null,
-          content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.UINOTIFICATION")}</label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><img style="vertical-align:middle" src="${imagePath}" width="${chatImageWidth}%"></p></div>`
+          content: message
         }; // has their hand raised!
       } else {
+        message += `<label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label></br><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.CHATMESSAGE")}</label>`; 
         chatData = {
           speaker: null,
-          content: `<div style="position:relative; background: #ddd9d5;padding: 0.5rem; margin-left:-7px;margin-right:-7px;margin-bottom:-7px;margin-top:-27px"><label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label><div style="position: absolute;top: 0;right: 0;width: 50px;height:50px;background: linear-gradient(45deg, #00000000 50%, ${player.color} 50%);"></div><br><label style="font-size: 15px"></label><div style="margin-top:5px ;height: 5px;width: 100%;background: linear-gradient(20deg,  #000000 70%, #ddd9d500 70%);"></div><p><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.UINOTIFICATION")}</label></p></div>`
+          content: message
         }; // has their hand raised!
       }
 
@@ -86,9 +88,15 @@ export default class HandRaiser {
 
     if (game.settings.get(this.moduleName, "showUiNotification")) {
       let player = game.users.get(id);
-      //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforeveryone
-      const permanentFlag = game.settings.get(this.moduleName, "makeUiNotificationPermanent");
-      this.socket.executeForEveryone(this.sendNotification, player, permanentFlag);      
+      if (game.settings.get(this.moduleName, "showUiNotificationOnlyToGM")) {
+        //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforallgms
+        const permanentFlag = game.settings.get(this.moduleName, "makeUiNotificationPermanent");
+        this.socket.executeForAllGMs(this.sendNotification, player, permanentFlag);                    
+      } else {
+        //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforeveryone
+        const permanentFlag = game.settings.get(this.moduleName, "makeUiNotificationPermanent");
+        this.socket.executeForEveryone(this.sendNotification, player, permanentFlag);              
+      }
     }  
 
     // shake screen

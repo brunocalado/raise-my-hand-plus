@@ -17,6 +17,10 @@
         "name": "Permanent UI Notification",
 				"hint": "This will make the notification permanent. You will need to click on it do dismiss."
 			},      
+			"showuinotificationonlytogm": {
+        "name": "Notification Only For GM",
+				"hint": "This will make the notification show only for GM users."
+			},        
 			"showuichatmessage": {
 				"name": "Show Chat Message",
         "hint": "A chat message will be displayed."

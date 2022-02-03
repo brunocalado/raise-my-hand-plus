@@ -46,6 +46,15 @@ Hooks.once('ready', function() {
     type: Boolean,
     default: false
   });
+  
+  game.settings.register(moduleName, "showUiNotificationOnlyToGM", {
+    name: game.i18n.localize("raise-my-hand.settings.showuinotificationonlytogm.name"), 
+    hint: game.i18n.localize("raise-my-hand.settings.showuinotificationonlytogm.hint"), 
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });  
 
   game.settings.register(moduleName, "showUiChatMessage", {
     name: game.i18n.localize("raise-my-hand.settings.showuichatmessage.name"), // "Should a raised hand display a chat message when raised?"

@@ -16,6 +16,10 @@
 			"makeuinotificationpermanent": {
         "name": "Notificação Permanente",
 				"hint": "Essa opção vai fazer com que a notificação seja permanente. Você vai precisar clicar nela para que ela suma."
+			},        
+			"showuinotificationonlytogm": {
+        "name": "Notificação Apenas para Mestre",
+				"hint": "Isso vai fazer com que a notificação apareça apenas para mestres."
 			},         
 			"showuichatmessage": {
 				"name": "Mostrar Mensagem de Chat",
@@ -50,7 +54,7 @@
         "hint": "Vpcê pode definir o volume do som. Varia de 0,1 até 1. Isso representa porcentagem. Exemplo: 0.6 é 60% do volume."
 			},
 			"shakescreen": {
-				"name": "Sacodir a Tela",
+				"name": "Sacudir a Tela",
         "hint": "Isso vai tremer a tela. OBRIGATÓRIO TER O MÓDULO Fluid Canvas ATIVADO!"
 			}
 		}
