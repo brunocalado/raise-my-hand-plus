@@ -1,7 +1,7 @@
 {
   "raise-my-hand":{
     "UINOTIFICATION":" hat die Hand gehoben.",
-    "CHATMESSAGE":"hat die Hand gehoben!",
+    "CHATMESSAGE":" hat die Hand gehoben!",
     "kandashisfluidcanvas":"Du brauchst das Fluid Canvas Modul!",
     "settings":{
       "displayhand":{
@@ -10,14 +10,14 @@
       },
       "showuinotification":{
         "name":"Zeige UI-Benachrichtigung",
-        "hint":"Eine UI-Benachrichtigung (für alle Spieler) wird angezeigt."
+        "hint":"Eine UI-Benachrichtigung wird allen Spielern angezeigt."
       },
       "makeuinotificationpermanent":{
         "name":"Permanente UI-Benachrichtigung",
         "hint":"Die Benachrichtigung wird angezeigt, bis sie aktiv weggeklickt wird."
       },
       "showuichatmessage":{
-        "name":"Zeige eine Chatnachricht",
+        "name":"Zeige eine Chatnachricht an",
         "hint":"Eine Benachrichtigung wird im Chat ausgegeben."
       },
       "showimagechatmessage":{
@@ -46,11 +46,11 @@
       },
       "warningsoundvolume":{
         "name":"Lautstärke des Audiosignals",
-        "hint":"Hier kannst du angeben, wie laut es abgespielt werden soll. 0.1 steht für 10% Lautsärke und 0.6 für 60%."
+        "hint":"Hier kannst du angeben, wie laut es abgespielt werden soll. 0.1 steht für 10% Lautstärke und 0.6 für 60%."
       },
       "shakescreen":{
         "name":"Bildschirmwackeln",
-        "hint":"Der Bildschirmhinhalt wird geschüttelt. BENÖTIGT das Fluid Canvas MODUL!"
+        "hint":"Der Bildschirminhalt wird geschüttelt. BENÖTIGT das Fluid Canvas MODUL!"
       }
     }
   }
