@@ -1,7 +1,7 @@
 {
     "raise-my-hand": {
-        "UINOTIFICATION": " a levé à la main !",
-        "CHATMESSAGE": " a levé à la main !",
+        "UINOTIFICATION": " a levé la main !",
+        "CHATMESSAGE": " a levé la main !",
         "kandashisfluidcanvas": "Vous avez besoin du module Fluid Canvas !",
         "settings": {
             "displayhand": {
@@ -38,7 +38,7 @@
             },
             "warningsoundpath": {
                 "name": "Chemin du son",
-                "hint": "Vous pouvez configurer le son qui sera lu."
+                "hint": "Vous pouvez configurer le son qui sera joué."
             },
             "warningsoundvolume": {
                 "name": "Volume du son",
