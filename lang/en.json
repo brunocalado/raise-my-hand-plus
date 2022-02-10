@@ -25,6 +25,10 @@
 				"name": "Show Chat Message",
         "hint": "A chat message will be displayed."
 			},
+			"showuichatmessageonlyforgm": {
+				"name": "Chat Message Only for GM",
+        "hint": "The chat message will be send only for GM users if you check this option."
+			},
 			"showimagechatmessage": {
 				"name": "Add Image to Chat Message",
         "hint": "This will add an image to the chat message."

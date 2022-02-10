@@ -25,6 +25,10 @@
 				"name": "Mostrar Mensagem de Chat",
         "hint": "Uma mensagem de chat será exibida."
 			},
+			"showuichatmessageonlyforgm": {
+				"name": "Mensagem de Chat Apenas para GM",
+        "hint": "Uma mensagem de chat será exibida apenas para os mestres se essa opção for marcada."
+			},
 			"showimagechatmessage": {
 				"name": "Adicionar Imagem a Mensagem de Chat",
         "hint": "Uma imagem será adicionada a mensagem de chat."

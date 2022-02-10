@@ -54,18 +54,22 @@ export default class HandRaiser {
           imagePath = game.settings.get("raise-my-hand", "chatimagepath");
         }
         message += `<label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label></br><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.CHATMESSAGE")}</label><p><img style="vertical-align:middle" src="${imagePath}" width="${chatImageWidth}%"></p>`; 
-        chatData = {
-          speaker: null,
-          content: message
-        }; // has their hand raised!
       } else {
         message += `<label class="titulo" style="font-size:35px; color: #b02b2e;">${player.name}</label></br><label style="font-size: 15px">${game.i18n.localize("raise-my-hand.CHATMESSAGE")}</label>`; 
+      }
+      
+      if (game.settings.get(this.moduleName, "showUiChatMessageOnlyForGM")) {
+        chatData = {
+          speaker: null,
+          content: message,
+          whisper : ChatMessage.getWhisperRecipients("GM")          
+        }; // has their hand raised!
+      } else {
         chatData = {
           speaker: null,
           content: message
-        }; // has their hand raised!
+        }; // has their hand raised!        
       }
-
       ChatMessage.create(chatData, {});
     }
 

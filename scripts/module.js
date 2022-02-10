@@ -65,6 +65,15 @@ Hooks.once('ready', function() {
     default: false
   });
 
+  game.settings.register(moduleName, "showUiChatMessageOnlyForGM", {
+    name: game.i18n.localize("raise-my-hand.settings.showuichatmessageonlyforgm.name"), // "Should a raised hand display a chat message when raised?"
+    hint: game.i18n.localize("raise-my-hand.settings.showuichatmessageonlyforgm.hint"), // "Should a raised hand display a chat message when raised?"
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
+
   game.settings.register(moduleName, "showImageChatMessage", {
     name: game.i18n.localize("raise-my-hand.settings.showimagechatmessage.name"), // "Should a image be displayed with the chat message?"
     hint: game.i18n.localize("raise-my-hand.settings.showimagechatmessage.hint"), // "Should a image be displayed with the chat message?"
