@@ -7,7 +7,7 @@ Hooks.once("init", async function () {
     hint: 'Toogle Raise Hand',
     editable: [{ key: "KeyH", modifiers: []}],
     onDown: () => {
-      window.game.handRaiser.isRaised ? window.game.handRaiser.lower() : window.game.handRaiser.raise();
+      window.game.handRaiser.toggle();;
     },
     onUp: () => {},
     restricted: false,  // Restrict this Keybinding to gamemaster only?

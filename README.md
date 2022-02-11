@@ -16,9 +16,9 @@ A player can click in the hand to request attention.
 
 ## Features
 - A small hand will appear next to the player name.
-- A notification warning will be displayed. You can set to everyone or just GM users.
+- A notification warning will be displayed. You can set to everyone or just GM users. You can make the notification persistent.
 - A sound will be played. You can set the sound and volume.
-- A message will be sent to the chat. It will get the user color.
+- A message will be sent to the chat. It will get the user color. You can use player avatar as image. You can set to everyone or just GM users.
 - You can shake the screen. **Requires Fluid Canvas**.
 - Foundry VTT Keybind. Check Controls.
 
@@ -27,7 +27,7 @@ If you want to translate this module [DOWNLOAD THIS FILE](https://raw.githubuser
 
 You also need to share with me the default name convention for your language. This is very easy to get. 
 - Find a system or module which is translated to your language. 
-- Open the module.json or system.json file.
+- Open the **module.json** or **system.json** file.
 - You should find something like the code above. It's under **languages**. Share with me **lang, name and path** for your language.
 ```json
 {
@@ -47,4 +47,6 @@ You also need to share with me the default name convention for your language. Th
 - Do you want to send a translation? [Send it!](https://github.com/brunocalado/raise-my-hand-plus/issues)
 
 # License
+[LICENSE](https://github.com/brunocalado/raise-my-hand-plus/blob/main/LICENSE)
+
 This module is a fork from (Raise My Hand): https://github.com/cswendrowski/FoundryVTT-Raise-My-Hand
