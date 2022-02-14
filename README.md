@@ -13,9 +13,20 @@ A player can click in the hand to request attention.
   </tr>
 </thead>
 </table> 
+<table>
+<thead>
+  <tr>
+    <th>
+      <p align="center">
+        <img width="500" src="assets/doc2.webp">
+      </p>
+    </th>
+  </tr>
+</thead>
+</table> 
 
 ## Features
-- A small hand will appear next to the player name.
+- A small hand will appear next to the player name if you are in **Toogle Mode**.
 - A notification warning will be displayed. You can set to everyone or just GM users. You can make the notification persistent.
 - A sound will be played. You can set the sound and volume.
 - A message will be sent to the chat. It will get the user color. You can use player avatar as image. You can set to everyone or just GM users.

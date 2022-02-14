@@ -14,19 +14,25 @@ export default class HandRaiser {
   }
 
   toggle() {
-    if (this.isRaised) this.lower();
-    else this.raise();
+    if (game.settings.get(this.moduleName, "handToogleBehavior")) {
+      if (this.isRaised) this.lower();
+      else this.raise();
+    } else {
+      this.raise();      
+    }      
   }
 
   raise() {
     const id = this.userId;
-    if (this.isRaised) return;    
-    this.isRaised = true;
-
-    if (game.settings.get(this.moduleName, "showEmojiIndicator")) {
-      this.socket.executeForEveryone(this.showHandForEveryone, id);              
-    }
-
+    if (game.settings.get(this.moduleName, "handToogleBehavior")) {
+      if (this.isRaised) return;    
+      this.isRaised = true;
+      
+      if (game.settings.get(this.moduleName, "showEmojiIndicator")) { // SHOW HAND NEXT TO PLAYER NAME
+        this.socket.executeForEveryone(this.showHandForEveryone, id);              
+      }
+    } 
+    
     // SHOW NOTIFICATION
     if (game.settings.get(this.moduleName, "showUiNotification")) {
       let player = game.users.get(id);

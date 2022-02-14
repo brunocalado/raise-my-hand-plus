@@ -20,6 +20,15 @@ Hooks.once('ready', function() {
   let handRaiser = new HandRaiser();
   window.game.handRaiser = handRaiser;
 
+  game.settings.register(moduleName, "handToogleBehavior", {
+    name: game.i18n.localize("raise-my-hand.settings.handtooglebehavior.name"), // "Should a raised hand be displayed in the Players list?"
+    hint: game.i18n.localize("raise-my-hand.settings.handtooglebehavior.hint"), // "Should a raised hand be displayed in the Players list?"
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: true
+  });
+
   game.settings.register(moduleName, "showEmojiIndicator", {
     name: game.i18n.localize("raise-my-hand.settings.displayhand.name"), // "Should a raised hand be displayed in the Players list?"
     hint: game.i18n.localize("raise-my-hand.settings.displayhand.hint"), // "Should a raised hand be displayed in the Players list?"

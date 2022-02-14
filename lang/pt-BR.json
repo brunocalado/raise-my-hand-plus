@@ -5,6 +5,10 @@
     "kandashisfluidcanvas": "Você precisa do módulo Fluid Canvas!",    
     
 		"settings": {
+			"handtooglebehavior": {
+        "name": "Operar em Modo de Alternar",
+				"hint": "Quando isso estiver ativado o módulo vai trabalhar no modo de alternar, isso quer dizer que após chamar por atenção você precisa pedir novamente para tirar o pedido. Se essa caixa não estiver ativada toda vez que o módulo for ativado será enviado um pedido por atenção, o ícone da mão vai parar de funcionar também."
+			},      
 			"displayhand": {
         "name": "Mostrar Mão na Lista de Jogadores",
 				"hint": "Um ícone de mão será mostrado na lista de jogadores."

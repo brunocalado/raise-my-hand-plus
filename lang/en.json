@@ -5,6 +5,10 @@
     "kandashisfluidcanvas": "You need the Fluid Canvas Module!",    
     
 		"settings": {
+			"handtooglebehavior": {
+        "name": "Work in Toogle Mode",
+				"hint": "When this is checked the module will work in toogle mode, this means you need to trigger one time to request attention and then you need to trigger another time to drop the request. If you disable this, the every time you trigger the module it will send a request for atention. The hand icon next to the player name will stop work."
+			},      
 			"displayhand": {
         "name": "Show Hand on Players List",
 				"hint": "A hand icon will be displayed in the players list."
