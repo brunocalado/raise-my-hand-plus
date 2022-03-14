@@ -1,72 +1,72 @@
 {
-	"raise-my-hand": {
-		"UINOTIFICATION": " has their hand raised",
-		"CHATMESSAGE": "has their hand raised!",    
-    "kandashisfluidcanvas": "You need the Fluid Canvas Module!",    
+    "raise-my-hand": {
+        "UINOTIFICATION": " has their hand raised",
+        "CHATMESSAGE": "has their hand raised!",    
+        "kandashisfluidcanvas": "You need the Fluid Canvas Module!",    
     
-		"settings": {
-			"handtooglebehavior": {
-        "name": "Work in Toogle Mode",
-				"hint": "When this is checked the module will work in toogle mode, this means you need to trigger one time to request attention and then you need to trigger another time to drop the request. If you disable this, the every time you trigger the module it will send a request for atention. The hand icon next to the player name will stop work."
-			},      
-			"displayhand": {
-        "name": "Show Hand on Players List",
-				"hint": "A hand icon will be displayed in the players list."
-			},
-			"showuinotification": {
-        "name": "Display UI Notification",
-				"hint": "A UI notification will be displayed for all players."
-			},
-			"makeuinotificationpermanent": {
-        "name": "Permanent UI Notification",
-				"hint": "This will make the notification permanent. You will need to click on it do dismiss."
-			},      
-			"showuinotificationonlytogm": {
-        "name": "Notification Only For GM",
-				"hint": "This will make the notification show only for GM users."
-			},        
-			"showuichatmessage": {
-				"name": "Show Chat Message",
-        "hint": "A chat message will be displayed."
-			},
-			"showuichatmessageonlyforgm": {
-				"name": "Chat Message Only for GM",
-        "hint": "The chat message will be send only for GM users if you check this option."
-			},
-			"showimagechatmessage": {
-				"name": "Add Image to Chat Message",
-        "hint": "This will add an image to the chat message."
-			},
-			"chatimagepath": {
-				"name": "Chat Image Path",
-        "hint": "You can set a path to the image displayed on the chat."
-			},
-			"chatimagewidth": {
-				"name": "Chat Image Width",
-        "hint": "You can set the size of the custom image or player avatar. It is %"
-			},
-			"chatmessageimageuserart": {
-				"name": "Replace Chat Image with Player Avatar",
-        "hint": "This will use the user avatar image as chat image instead of the default image."
-			},
-			"playsound": {
-				"name": "Play Sound",
-        "hint": "This will play a default sound."
-			},
-			"warningsoundpath": {
-				"name": "Warning Sound Path",
-        "hint": "You can set a path to a sound you prefer."
-			},
-			"warningsoundvolume": {
-				"name": "Warning Sound Volume",
-        "hint": "You can set the volume for the warning sound. Use 0.1 for 10% of the volume. 0.6 for 60% of the volume."
-			},
-			"shakescreen": {
-				"name": "Shake Screen",
-        "hint": "This will shake the screen. THIS REQUIRES Fluid Canvas MODULE!"
-			}
-		}
-  }
+        "settings": {
+            "handtooglebehavior": {
+                "name": "Work in Toogle Mode",
+                "hint": "When this is checked, the module will work in toogle mode, this means you need to trigger one time to request attention and then you need to trigger another time to drop the request. If you disable this, then every time you trigger the module, it will send a request for attention. The hand icon next to the player name will stop working."
+            },      
+            "displayhand": {
+                "name": "Show Hand on Players List",
+                "hint": "A hand icon will be displayed in the players list."
+            },
+            "showuinotification": {
+                "name": "Display UI Notification",
+                "hint": "A UI notification will be displayed for all players."
+            },
+            "makeuinotificationpermanent": {
+                "name": "Permanent UI Notification",
+                "hint": "This will make the notification permanent. You will need to click on it to dismiss it."
+            },      
+            "showuinotificationonlytogm": {
+                "name": "Notification Only For GM",
+                "hint": "This will make the notification show only for GM users."
+            },        
+            "showuichatmessage": {
+                "name": "Show Chat Message",
+                "hint": "A chat message will be displayed."
+            },
+            "showuichatmessageonlyforgm": {
+                "name": "Chat Message Only for GM",
+                "hint": "The chat message will be send only for GM users if you check this option."
+            },
+            "showimagechatmessage": {
+                "name": "Add Image to Chat Message",
+                "hint": "This will add an image to the chat message."
+            },
+            "chatimagepath": {
+                "name": "Chat Image Path",
+                "hint": "You can set a path to the image displayed on the chat."
+            },
+            "chatimagewidth": {
+                "name": "Chat Image Width",
+                "hint": "You can set the size of the custom image or player avatar. It is %"
+            },
+            "chatmessageimageuserart": {
+                "name": "Replace Chat Image with Player Avatar",
+                "hint": "This will use the user avatar image as chat image instead of the default image."
+            },
+            "playsound": {
+                "name": "Play Sound",
+                "hint": "This will play a default sound."
+            },
+            "warningsoundpath": {
+                "name": "Warning Sound Path",
+                "hint": "You can set a path to a sound you prefer."
+            },
+            "warningsoundvolume": {
+                "name": "Warning Sound Volume",
+                "hint": "You can set the volume for the warning sound. Use 0.1 for 10% of the volume. 0.6 for 60% of the volume."
+            },
+            "shakescreen": {
+                "name": "Shake Screen",
+                "hint": "This will shake the screen. THIS REQUIRES Fluid Canvas MODULE!"
+            }
+        }
+    }
 }
 
 
