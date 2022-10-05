@@ -80,7 +80,6 @@ You also need to share with me the default name convention for your language. Th
 - alarm sound: https://creativecommons.org/licenses/by/4.0/
 - hand sound: https://creativecommons.org/licenses/by/4.0/
 - [X-Card by John Stavropoulos](https://docs.google.com/document/d/1SB0jsx34bWHZWbnNIVVuMjhDkrdFGo1_hSC2BWPlI3A/edit)
-- The designer is [Matheus Moreno Mota](https://www.instagram.com/matheus_mesmo/)
 - X Card Designer: [Matheus Moreno Mota](https://www.instagram.com/matheus_mesmo/)
 <p align="center">
   <img width="200" src="assets/capybara.webp">
