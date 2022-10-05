@@ -20,7 +20,7 @@ A player can click in the hand to request attention. There is also a X Button fo
   <tr>
     <th>
       <p align="center">
-        <img width="500" src="assets/doc_keys.webp">
+        <img width="700" src="assets/doc_keys.webp">
       </p>
     </th>
   </tr>
