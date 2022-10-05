@@ -8,9 +8,11 @@ export default class HandRaiser {
     // socketlib
     this.socket = socketlib.registerModule(this.moduleName);       	
   	this.socket.register("sendNotification", this.sendNotification);
-    this.socket.register("shakeTheScreen", this.shakeTheScreen);    
-    this.socket.register("showHandForEveryone", this.showHandForEveryone); // SHOW HAND FOR EVERYONE
-    this.socket.register("removeHandForEveryone", this.removeHandForEveryone); // REMOVE HAND FOR EVERYONE
+    //this.socket.register("shakeTheScreen", this.shakeTheScreen);    
+    this.socket.register("showHandDialogForEveryone", this.showHandDialogForEveryone);    // Hand Dialog
+    this.socket.register("showXCardDialogForEveryone", this.showXCardDialogForEveryone);  // X-Card  
+    this.socket.register("showHandForEveryone", this.showHandForEveryone);                // SHOW HAND FOR EVERYONE
+    this.socket.register("removeHandForEveryone", this.removeHandForEveryone);            // REMOVE HAND FOR EVERYONE
   }
 
   toggle() {
@@ -22,8 +24,10 @@ export default class HandRaiser {
     }      
   }
 
-  raise() {
+  async raise() {
     const id = this.userId;
+    const player = game.users.get(id);
+          
     if (game.settings.get(this.moduleName, "handToogleBehavior")) {
       if (this.isRaised) return;    
       this.isRaised = true;
@@ -35,7 +39,7 @@ export default class HandRaiser {
     
     // SHOW NOTIFICATION
     if (game.settings.get(this.moduleName, "showUiNotification")) {
-      let player = game.users.get(id);
+      //let player = game.users.get(id);
       if (game.settings.get(this.moduleName, "showUiNotificationOnlyToGM")) {
         //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforallgms
         const permanentFlag = game.settings.get(this.moduleName, "makeUiNotificationPermanent");
@@ -46,17 +50,16 @@ export default class HandRaiser {
         this.socket.executeForEveryone(this.sendNotification, player, permanentFlag);              
       }
     }  
-
+/*
     // SHAKE SCREEN
     if (game.settings.get(this.moduleName, "shakescreen")) {
       //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforeveryone            
       this.socket.executeForEveryone(this.shakeTheScreen); 
     }
-
+*/
     // ======================================
     // CHAT
     if (game.settings.get(this.moduleName, "showUiChatMessage")) {
-      let player = game.users.get(this.userId);
       let imagePath;
       let chatImageWidth = game.settings.get(this.moduleName, "chatimagewidth");
       let chatData;
@@ -64,7 +67,7 @@ export default class HandRaiser {
       let message='';
       if (showImageChatMessage) {
         if (game.settings.get(this.moduleName, "chatMessageImageUserArt")) {
-          imagePath = player.data.avatar;
+          imagePath = player.avatar;
         } else {
           imagePath = game.settings.get("raise-my-hand", "chatimagepath");
         }
@@ -99,8 +102,25 @@ export default class HandRaiser {
         loop: false
       }, true);
     } // END SOUND
-  }
 
+    // Show dialog image
+    if ( game.settings.get("raise-my-hand", "showDialogMessage") ) {      
+      let imagePath;
+      if (game.settings.get(this.moduleName, "chatMessageImageUserArt")) {
+        imagePath = player.avatar;
+      } else {
+        imagePath = game.settings.get("raise-my-hand", "chatimagepath");
+      }  
+
+      //https://github.com/manuelVo/foundryvtt-socketlib#socketexecuteforeveryone            
+      const dimensions = await this.getDimensions(imagePath);    
+      this.socket.executeForEveryone(this.showHandDialogForEveryone, id, imagePath, dimensions);       
+    }
+
+  } // raise end ----------------------------------
+  
+  //-----------------------------------------------
+  // Lower hand
   lower() {
     const id = this.userId;
     if (!this.isRaised) return;
@@ -121,7 +141,90 @@ export default class HandRaiser {
   removeHandForEveryone(id) {     //THIS WILL REMOVE THE HAND
     $("[data-user-id='" + id + "'] > .player-name > .raised-hand").remove();
   }   
+
+  //-----------------------------------------------
+  // Show  dialog with hand to everyone
+  async showHandDialogForEveryone(id, imagePath, dimensions) {
+    const myDialogOptions = {};
+    myDialogOptions['id'] = 'raise-my-hand-dialog';
+    myDialogOptions['resizable'] = false;
+    
+    if(dimensions.width>500 || dimensions.height>500) {
+      myDialogOptions['width'] = 500;
+      myDialogOptions['height'] = 500;      
+    } else {
+      myDialogOptions['width'] = '100%';
+      myDialogOptions['height'] = '100%';
+    }
+
+    const player = game.users.get(id);
+    const templateData = { image_path: imagePath, player_name: player.name, player_color: player.color };
+    const myContent = await renderTemplate("modules/raise-my-hand/templates/hand.html", templateData);
+    
+    new Dialog({
+        title: player.name,
+        content: myContent,
+        buttons: {}
+      }, myDialogOptions
+    ).render(true);    
+  }
+
+  //-----------------------------------------------
+  // X-Card
+  async showXCardDialogForEveryone() {
+    const myDialogOptions = {};
+    myDialogOptions['id'] = 'raise-my-hand-dialog';
+    myDialogOptions['resizable'] = false;
+    myDialogOptions['width'] = 370;
+    myDialogOptions['height'] = 440;
+    
+    const imagePath = "modules/raise-my-hand/assets/xcard.webp";
+    const templateData = { image_path: imagePath };
+    const myContent = await renderTemplate("modules/raise-my-hand/templates/xcard.html", templateData);
+    
+    new Dialog({
+        title: 'Stop!',
+        content: myContent,
+        buttons: {}
+      }, myDialogOptions
+    ).render(true);  
+    
+    // Sound X-Card
+    if (game.settings.get("raise-my-hand", "xcardsound")) {      
+      const soundVolume = 1;
+      const mySound = 'modules/raise-my-hand/assets/alarm.ogg';
+      AudioHelper.play({
+        src: mySound,
+        volume: soundVolume,
+        autoplay: true,
+        loop: false
+      }, true);    
+    } // END IF
+  }
+  //-----------------------------------------------
+  // X-Card 
+  async showXCardDialogForEveryoneSocket() {
+    if (game.settings.get("raise-my-hand", "xcardgmonly")) {
+      this.socket.executeForAllGMs(this.showXCardDialogForEveryone);
+    } else {
+      this.socket.executeForEveryone(this.showXCardDialogForEveryone);
+    }
+    
+  }
   
+  // 
+  async getDimensions(path) {
+    const fileExtension = path.split('.').pop();     
+    let img = new Image();
+    return await new Promise(resolve => { 
+      img.onload = function() {
+        resolve({width: this.width, height: this.height});
+      };
+      img.src = path;
+    });
+  }  
+  
+/*  
   shakeTheScreen() {
     const intensity = 1;
     const duration = 500;
@@ -133,4 +236,6 @@ export default class HandRaiser {
       ui.notifications.error( '✋ ' + game.i18n.localize("raise-my-hand.kandashisfluidcanvas") ); //
     }       
   } 
+*/
+
 }

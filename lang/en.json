@@ -38,16 +38,16 @@
                 "hint": "This will add an image to the chat message."
             },
             "chatimagepath": {
-                "name": "Chat Image Path",
-                "hint": "You can set a path to the image displayed on the chat."
+                "name": "Image Path",
+                "hint": "You can set a path to the image displayed on the chat and dialog."
             },
             "chatimagewidth": {
                 "name": "Chat Image Width",
                 "hint": "You can set the size of the custom image or player avatar. It is %"
             },
             "chatmessageimageuserart": {
-                "name": "Replace Chat Image with Player Avatar",
-                "hint": "This will use the user avatar image as chat image instead of the default image."
+                "name": "Replace Chat/Dialog Image with Player Avatar",
+                "hint": "This will use the user avatar image as chat/dialog image instead of the default image."
             },
             "playsound": {
                 "name": "Play Sound",
@@ -64,7 +64,23 @@
             "shakescreen": {
                 "name": "Shake Screen",
                 "hint": "This will shake the screen. THIS REQUIRES Fluid Canvas MODULE!"
-            }
+            },
+            "showdialogmessage": {
+                "name": "Show Dialog",
+                "hint": "This will show a dialog with the defined image."
+            },
+            "xcard": {
+                "name": "X-Card",
+                "hint": "Check this to turn on the X-Card feature. WARNING: The world will reload."
+            },            
+            "xcardgmonly": {
+                "name": "Show X Card for GM Only",
+                "hint": "This will make the X-Card show just for the GM. If you uncheck this all connected clients will see it."
+            },
+            "xcardsound": {
+                "name": "Play X-Card Alarm",
+                "hint": "Check this to play a sound if the X-Card is triggered."
+            }              
         }
     }
 }

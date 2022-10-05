@@ -2,24 +2,39 @@ const moduleName = 'raise-my-hand';
 import HandRaiser from "./HandRaiser.mjs";
 
 Hooks.once("init", async function () {
+  // Hand
   game.keybindings.register(moduleName, "raiseHand", {
     name: 'Raise Hand',
     hint: 'Toogle Raise Hand',
     editable: [{ key: "KeyH", modifiers: []}],
     onDown: () => {
-      window.game.handRaiser.toggle();;
+      window.game.handRaiser.toggle();
     },
     onUp: () => {},
     restricted: false,  // Restrict this Keybinding to gamemaster only?
     reservedModifiers: [],
     precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL
   });
+  // X-Card
+  game.keybindings.register(moduleName, "xCard", {
+    name: 'X Card',
+    hint: 'This will open the X-Card.',
+    editable: [{ key: "KeyX", modifiers: []}],
+    onDown: () => {
+      window.game.handRaiser.showXCardDialogForEveryoneSocket()
+    },
+    onUp: () => {},
+    restricted: false,  // Restrict this Keybinding to gamemaster only?
+    reservedModifiers: [],
+    precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL
+  });  
 });
 
-Hooks.once('ready', function() {
+Hooks.once('init', function() {
   let handRaiser = new HandRaiser();
   window.game.handRaiser = handRaiser;
-
+  const debouncedReload = debounce(() => location.reload(), 1000); // RELOAD AFTER CHANGE
+  
   game.settings.register(moduleName, "handToogleBehavior", {
     name: game.i18n.localize("raise-my-hand.settings.handtooglebehavior.name"), // "Should a raised hand be displayed in the Players list?"
     hint: game.i18n.localize("raise-my-hand.settings.handtooglebehavior.hint"), // "Should a raised hand be displayed in the Players list?"
@@ -99,7 +114,8 @@ Hooks.once('ready', function() {
     scope: 'world',
     config: true,
     default: 'modules/raise-my-hand/assets/hand.svg',
-    type: String
+    type: String,
+    filePicker: 'imagevideo'
   }); 
   
   game.settings.register(moduleName, 'chatimagewidth', {
@@ -125,6 +141,16 @@ Hooks.once('ready', function() {
     default: false
   });
   
+  // call this with: game.settings.get("raise-my-hand", "showDialogMessage")
+  game.settings.register(moduleName, "showDialogMessage", {
+    name: game.i18n.localize("raise-my-hand.settings.showdialogmessage.name"), // Show Dialog
+    hint: game.i18n.localize("raise-my-hand.settings.showdialogmessage.hint"), // This will show a dialog with the defined image.    
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
+  
   game.settings.register(moduleName, "playSound", {
     name: game.i18n.localize("raise-my-hand.settings.playsound.name"), // "Should a sound be played when raised?"
     hint: game.i18n.localize("raise-my-hand.settings.playsound.hint"), // 
@@ -141,7 +167,8 @@ Hooks.once('ready', function() {
     scope: 'world',
     config: true,
     default: 'modules/raise-my-hand/assets/bell01.ogg',
-    type: String
+    type: String,
+    filePicker: 'audio'
   });  
   
   // call this with: game.settings.get("raise-my-hand", "warningsoundvolume")
@@ -152,13 +179,43 @@ Hooks.once('ready', function() {
     config: true,
     default: 0.6,
     range: {
-        min: 0.2,
-        max: 1,
-        step: 0.1
+      min: 0.2,
+      max: 1,
+      step: 0.1
     },     
     type: Number
   });
 
+  // call this with: game.settings.get("raise-my-hand", "xcard")
+  game.settings.register(moduleName, "xcard", {
+    name: game.i18n.localize("raise-my-hand.settings.xcard.name"), // X-Card
+    hint: game.i18n.localize("raise-my-hand.settings.xcard.hint"), // Check this to turn on the X-Card feature. WARNING: The world will reload.
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: debouncedReload
+  });  
+  // call this with: game.settings.get("raise-my-hand", "xcardgmonly")
+  game.settings.register(moduleName, "xcardgmonly", {
+    name: game.i18n.localize("raise-my-hand.settings.xcardgmonly.name"), // Show X Card for GM Only
+    hint: game.i18n.localize("raise-my-hand.settings.xcardgmonly.hint"), // This will make the X-Card show just for the GM. If you uncheck this all connected clients will see it.
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
+  // call this with: game.settings.get("raise-my-hand", "xcardsound")
+  game.settings.register(moduleName, "xcardsound", {
+    name: game.i18n.localize("raise-my-hand.settings.xcardsound.name"), // "Should a sound be played when raised?"
+    hint: game.i18n.localize("raise-my-hand.settings.xcardsound.hint"), // 
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: true
+  });  
+
+/*
   game.settings.register(moduleName, "shakescreen", {
     name: game.i18n.localize("raise-my-hand.settings.shakescreen.name"), // "Shake Screen"
     hint: game.i18n.localize("raise-my-hand.settings.shakescreen.hint"), // "Should a raised hand shake the screen? THIS REQUIRES THE MODULE Fluid Canvas"
@@ -167,7 +224,7 @@ Hooks.once('ready', function() {
     type: Boolean,
     default: false
   });
-
+*/
 });
 
 Hooks.on("getSceneControlButtons", function(controls) {
@@ -179,5 +236,15 @@ Hooks.on("getSceneControlButtons", function(controls) {
     button: true,
     onClick: () => window.game.handRaiser.toggle()
   });
+  
+  if ( game.settings.get("raise-my-hand", "xcard") ) {
+    tileControls.tools.push({
+      icon: "fas fa-times",
+      name: "x-card",
+      title: "X Card",
+      button: true,
+      onClick: () => window.game.handRaiser.showXCardDialogForEveryoneSocket()
+    });  
+  }
+  
 });
-

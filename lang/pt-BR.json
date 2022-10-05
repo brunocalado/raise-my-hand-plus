@@ -38,16 +38,16 @@
         "hint": "Uma imagem será adicionada a mensagem de chat."
 			},
 			"chatimagepath": {
-				"name": "Endereço da Imagem do Chat",
-        "hint": "Você pode definir uma imagem para a mensagem do chat."
+				"name": "Endereço da Imagem do Chat/Diálogo",
+        "hint": "Você pode definir a imagem para a mensagem do chat/diálogo."
 			},
 			"chatimagewidth": {
 				"name": "Largura da Imagem do Chat",
         "hint": "Você pode definir o tamanho da imagem do chat. Está em porcentagem (%)."
 			},
 			"chatmessageimageuserart": {
-				"name": "Trocar Imagem do Chat pelo Avatar do Jogador",
-        "hint": "Isso vai usar o avatar do jogador no lugar de uma imagem padrão na mensagem de chat."
+				"name": "Trocar Imagem do Chat/Diálogo pelo Avatar do Jogador",
+        "hint": "Isso vai usar o avatar do jogador no lugar de uma imagem padrão na mensagem de chat/dialogo."
 			},
 			"playsound": {
 				"name": "Tocar Som",
@@ -64,7 +64,23 @@
 			"shakescreen": {
 				"name": "Sacudir a Tela",
         "hint": "Isso vai tremer a tela. OBRIGATÓRIO TER O MÓDULO Fluid Canvas ATIVADO!"
-			}
+			},
+      "showdialogmessage": {
+        "name": "Exibir Diálogo",
+        "hint": "Isso vai exibir uma caixa de diálogo com a imagem definida."
+      },
+      "xcard": {
+          "name": "X-Card",
+          "hint": "Marque isso para ativar a função de X-Card. ATENÇÃO: Isso vai recarregar o mundo."
+      },           
+      "xcardgmonly": {
+          "name": "X-Card apenas para o Mestre",
+          "hint": "Isso vai fazer com o cartão de alerta seja exibido apenas para o mestre. Desmarque isso para que seja exibido para todos os jogadores."
+      },
+      "xcardsound": {
+          "name": "Alarme para X-Card",
+          "hint": "Marque isso para que um som de alerta seja tocado quando o X-Card for ativado."
+      }         
 		}
   }
 }
