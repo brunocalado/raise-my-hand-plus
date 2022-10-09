@@ -191,7 +191,7 @@ export default class HandRaiser {
     
     // Sound X-Card
     if (game.settings.get("raise-my-hand", "xcardsound")) {      
-      const soundVolume = 1;
+      const soundVolume = game.settings.get("raise-my-hand", "xcardsoundvolume");
       const mySound = 'modules/raise-my-hand/assets/alarm.ogg';
       AudioHelper.play({
         src: mySound,

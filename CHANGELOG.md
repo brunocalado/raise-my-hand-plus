@@ -1,3 +1,7 @@
+1.4.1
+- Disable X-Card Key
+-  Add volume slider for x-card sound
+
 1.4.0
 - removed shake screen (kandashi fluid is broken)
 - added dialog option

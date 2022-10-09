@@ -21,7 +21,9 @@ Hooks.once("init", async function () {
     hint: 'This will open the X-Card.',
     editable: [{ key: "KeyX", modifiers: []}],
     onDown: () => {
-      window.game.handRaiser.showXCardDialogForEveryoneSocket()
+      if ( game.settings.get("raise-my-hand", "xcard") ) {
+        window.game.handRaiser.showXCardDialogForEveryoneSocket();
+      }
     },
     onUp: () => {},
     restricted: false,  // Restrict this Keybinding to gamemaster only?
@@ -213,6 +215,21 @@ Hooks.once('init', function() {
     config: true,
     type: Boolean,
     default: true
+  });  
+
+  // call this with: game.settings.get("raise-my-hand", "xcardsoundvolume")
+  game.settings.register(moduleName, 'xcardsoundvolume', {
+    name: game.i18n.localize("raise-my-hand.settings.xcardsoundvolume.name"),
+    hint: game.i18n.localize("raise-my-hand.settings.xcardsoundvolume.hint"),
+    scope: 'world',
+    config: true,
+    default: 0.6,
+    range: {
+      min: 0.1,
+      max: 1,
+      step: 0.1
+    },     
+    type: Number
   });  
 
 /*

@@ -59,7 +59,7 @@
 			},
 			"warningsoundvolume": {
 				"name": "Ajuste do Volume do Som",
-        "hint": "Vpcê pode definir o volume do som. Varia de 0,1 até 1. Isso representa porcentagem. Exemplo: 0.6 é 60% do volume."
+        "hint": "Você pode definir o volume do som. Varia de 0,1 até 1. Isso representa porcentagem. Exemplo: 0.6 é 60% do volume."
 			},
 			"shakescreen": {
 				"name": "Sacudir a Tela",
@@ -80,7 +80,11 @@
       "xcardsound": {
           "name": "Alarme para X-Card",
           "hint": "Marque isso para que um som de alerta seja tocado quando o X-Card for ativado."
-      }         
+      },
+      "xcardsoundvolume": {
+          "name": "X-Card Volume do Som",
+          "hint": "Você pode definir o volume do som da X-Card. Varia de 0,1 até 1. Isso representa porcentagem. Exemplo: 0.6 é 60% do volume."
+      }      
 		}
   }
 }
