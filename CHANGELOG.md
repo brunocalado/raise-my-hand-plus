@@ -1,3 +1,6 @@
+1.4.2
+- dialog is easier to close
+
 1.4.1
 - Disable X-Card Key
 -  Add volume slider for x-card sound

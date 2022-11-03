@@ -263,5 +263,5 @@ Hooks.on("getSceneControlButtons", function(controls) {
       onClick: () => window.game.handRaiser.showXCardDialogForEveryoneSocket()
     });  
   }
-  
+
 });
