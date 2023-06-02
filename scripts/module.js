@@ -35,7 +35,6 @@ Hooks.once("init", async function () {
 Hooks.once('init', function() {
   let handRaiser = new HandRaiser();
   window.game.handRaiser = handRaiser;
-  const debouncedReload = debounce(() => location.reload(), 1000); // RELOAD AFTER CHANGE
   
   game.settings.register(moduleName, "handToogleBehavior", {
     name: game.i18n.localize("raise-my-hand.settings.handtooglebehavior.name"), // "Should a raised hand be displayed in the Players list?"
@@ -196,7 +195,7 @@ Hooks.once('init', function() {
     config: true,
     type: Boolean,
     default: false,
-    onChange: debouncedReload
+    requiresReload: true
   });  
   // call this with: game.settings.get("raise-my-hand", "xcardgmonly")
   game.settings.register(moduleName, "xcardgmonly", {
