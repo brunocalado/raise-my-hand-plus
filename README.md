@@ -84,3 +84,6 @@ You also need to share with me the default name convention for your language. Th
 <p align="center">
   <img width="200" src="assets/capybara.webp">
 </p>
+
+# Mestre Digital
+About this module creator: https://sites.google.com/view/mestredigitalmodules
