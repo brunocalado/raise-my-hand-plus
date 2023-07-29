@@ -1,3 +1,6 @@
+1.4.6
+- translation pt-br  fix
+
 1.4.5
 - v11 only
 
