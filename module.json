@@ -11,10 +11,10 @@
     }
   ],
   
-  "version": "1.4.6",
+  "version": "1.4.7",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11"
+    "minimum": "12",
+    "verified": "12"
   },
   
   "scripts": [],

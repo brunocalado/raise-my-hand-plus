@@ -1,3 +1,7 @@
+1.4.7
+- v12
+- fix AudioHelper
+
 1.4.6
 - translation pt-br  fix
 

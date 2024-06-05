@@ -95,7 +95,7 @@ export default class HandRaiser {
     if (game.settings.get(this.moduleName, "playSound")) {
       const soundVolume = game.settings.get("raise-my-hand", "warningsoundvolume");
       const mySound = game.settings.get("raise-my-hand", "warningsoundpath"); //const mySound = 'modules/raise-my-hand/assets/bell01.ogg';
-      AudioHelper.play({
+      foundry.audio.AudioHelper.play({
         src: mySound,
         volume: soundVolume,
         autoplay: true,
@@ -193,7 +193,7 @@ export default class HandRaiser {
     if (game.settings.get("raise-my-hand", "xcardsound")) {      
       const soundVolume = game.settings.get("raise-my-hand", "xcardsoundvolume");
       const mySound = 'modules/raise-my-hand/assets/alarm.ogg';
-      AudioHelper.play({
+      foundry.audio.AudioHelper.play({
         src: mySound,
         volume: soundVolume,
         autoplay: true,
