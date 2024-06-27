@@ -53,6 +53,10 @@
                 "name": "Play Sound",
                 "hint": "This will play a default sound."
             },
+            "playsoundgmonly": {
+                "name": "GM Only Sound",
+                "hint": "Check this to play the sound only for the GM."
+            },            
             "warningsoundpath": {
                 "name": "Warning Sound Path",
                 "hint": "You can set a path to a sound you prefer."

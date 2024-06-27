@@ -160,6 +160,15 @@ Hooks.once('init', function() {
     type: Boolean,
     default: false
   });
+
+  game.settings.register(moduleName, "playSoundGMOnly", {
+    name: game.i18n.localize("raise-my-hand.settings.playsoundgmonly.name"), // "Should a sound be played when raised?"
+    hint: game.i18n.localize("raise-my-hand.settings.playsoundgmonly.hint"), // 
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: false
+  });
   
   // call this with: game.settings.get("raise-my-hand", "warningsoundpath")
   game.settings.register(moduleName, 'warningsoundpath', {

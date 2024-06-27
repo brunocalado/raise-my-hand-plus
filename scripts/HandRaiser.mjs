@@ -95,12 +95,19 @@ export default class HandRaiser {
     if (game.settings.get(this.moduleName, "playSound")) {
       const soundVolume = game.settings.get("raise-my-hand", "warningsoundvolume");
       const mySound = game.settings.get("raise-my-hand", "warningsoundpath"); //const mySound = 'modules/raise-my-hand/assets/bell01.ogg';
+      /* ... second params
+      * @param {object|boolean} socketOptions  Options which only apply when emitting playback over websocket.
+      *                         As a boolean, emits (true) or does not emit (false) playback to all other clients
+      *                         As an object, can configure which recipients should receive the event.
+      * @param {string[]} [socketOptions.recipients] An array of user IDs to push audio playback to. All users by default.
+      * create an array with gms ids
+      */      
       foundry.audio.AudioHelper.play({
         src: mySound,
         volume: soundVolume,
         autoplay: true,
         loop: false
-      }, true);
+      }, this.returnGMs());      
     } // END SOUND
 
     // Show dialog image
@@ -201,6 +208,7 @@ export default class HandRaiser {
       }, true);    
     } // END IF
   }
+  
   //-----------------------------------------------
   // X-Card 
   async showXCardDialogForEveryoneSocket() {
@@ -223,7 +231,20 @@ export default class HandRaiser {
       img.src = path;
     });
   }  
-  
+
+  //-----------------------------------------------
+  // 
+  async returnGMs() {
+    // Obtém todos os usuários que estão atualmente conectados
+    const connectedUsers = game.users.filter(user => user.active);
+    
+    // Filtra apenas os GMs conectados
+    const connectedGMs = connectedUsers.filter(user => user.isGM);
+    
+    // Retorna uma lista de nomes de usuário dos GMs conectados
+    return connectedGMs.map(user => user.id);
+  }
+
 /*  
   shakeTheScreen() {
     const intensity = 1;

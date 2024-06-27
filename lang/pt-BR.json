@@ -53,6 +53,10 @@
 				"name": "Tocar Som",
         "hint": "Isso vai tocar um som."
 			},
+      "playsoundgmonly": {
+          "name": "Som Apenas para Mestre",
+          "hint": "Marque essa caixa para o som ser tocado apenas para o mestre."
+      },         
 			"warningsoundpath": {
 				"name": "Endereço do Som",
         "hint": "Você pode colocar o endereço de um som que preferir."
