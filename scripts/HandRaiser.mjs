@@ -93,6 +93,10 @@ export default class HandRaiser {
   
     // SOUND
     if (game.settings.get(this.moduleName, "playSound")) {
+      let userType = true;
+      if (game.settings.get(this.moduleName, "playSoundGMOnly")) {
+        userType = this.returnGMs(); // return the GMs IDs
+      } 
       const soundVolume = game.settings.get("raise-my-hand", "warningsoundvolume");
       const mySound = game.settings.get("raise-my-hand", "warningsoundpath"); //const mySound = 'modules/raise-my-hand/assets/bell01.ogg';
       /* ... second params
@@ -107,7 +111,7 @@ export default class HandRaiser {
         volume: soundVolume,
         autoplay: true,
         loop: false
-      }, this.returnGMs());      
+      }, userType);
     } // END SOUND
 
     // Show dialog image
