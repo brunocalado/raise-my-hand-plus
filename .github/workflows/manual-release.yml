@@ -51,7 +51,7 @@ jobs:
           echo "prerelease=$(echo $RELEASE_DATA | jq -r .prerelease)" >> $GITHUB_OUTPUT
 
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.inputs.tag_name }}
           fetch-depth: 0
